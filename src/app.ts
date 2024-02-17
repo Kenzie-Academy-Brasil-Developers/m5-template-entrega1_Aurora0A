@@ -1,6 +1,6 @@
-// import "reflect-metadata";
 import express, { json } from "express";
 import helmet from "helmet";
+import "dotenv/config";
 import { HandleErros } from "./middlewares/handleErrors.middleware";
 import "express-async-errors";
 import { categoryRoute } from "./routes/category.route";

@@ -7,7 +7,7 @@ export class HandleErros{
         if(error instanceof AppError){
             return res.status(error.statusCode).json({ message: error.message });
         }else if(error instanceof ZodError){
-            return res.status(422).json(error);
+            return res.status(400).json({ message: error.flatten().fieldErrors });
         }else{
             console.log(error);
             return res.status(500).json({message: "Internal serve error"});
