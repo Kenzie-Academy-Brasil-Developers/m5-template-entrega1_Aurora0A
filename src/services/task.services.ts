@@ -8,7 +8,12 @@ export class TaskServices{
         return taskSchema.parse(data);
     }
 
-    public findMany = async (): Promise<TTaskSchema[]> => {
+    public findMany = async (search?: number): Promise<TTaskSchema[]> => {
+        if(search){
+            const data = await prisma.task.findMany({where: { categoryId: search }});
+    
+            return data;
+        }
         const data = await prisma.task.findMany();
 
         return data;

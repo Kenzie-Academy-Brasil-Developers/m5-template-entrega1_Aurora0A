@@ -10,7 +10,8 @@ export class TaskController{
     }
 
     public findMany = async (req: Request, res: Response): Promise<Response> => {
-        const response = await this.taskServices.findMany();
+        const search = req.query.search as number | undefined;
+        const response = await this.taskServices.findMany(search);
 
         return res.status(200).json(response);
     }

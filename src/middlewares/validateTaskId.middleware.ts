@@ -15,6 +15,10 @@ export const ValidateTaksId = async (
         throw new AppError(404, "Task not found")
     }
 
+    if(task.categoryId != req.body.categoryId){
+        throw new AppError(404, "Category not found")
+    }
+
     res.locals.task = task;
 
     return next();
